@@ -1,0 +1,14 @@
+{
+  "name": "webrtc.io-client",
+  "version": "0.0.0",
+  "description": "Drop-in client code for webrtc.io",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sarenji/webrtc.io-client.git"
+  },
+  "keywords": [
+    "webrtc"
+  ],
+  "author": "David Peter <david.a.peter@gmail.com>",
+  "license": "MIT"
+}
