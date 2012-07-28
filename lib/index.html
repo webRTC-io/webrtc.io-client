@@ -13,7 +13,7 @@
       rtc.connect("http://192.168.1.119:8001/");
       rtc.on('add remote stream', function(event) {
         console.log("ADDING REMOTE STREAM...");
-        document.getElementById('remote').src = webkitURL.createObjectURL(event.stream);
+        rtc.attachStream(event.stream, 'remote');
       });
     </script>
   </body>
