@@ -10,13 +10,13 @@
     <script src="./io.js"></script>
     <script>
       rtc.createStream('you');
-      rtc.sync("http://192.168.1.119:8001/");
+      rtc.connect("http://192.168.1.119:8001/");
       rtc.on('add remote stream', function(event) {
         console.log("ADDING REMOTE STREAM...");
         document.getElementById('remote').src = webkitURL.createObjectURL(event.stream);
       });
-      rtc.on('connections', function(peers) {
-        console.log("Connected.");
+      rtc.on('get peers', function(peers) {
+        console.log("Got peers: " + peers);
       });
     </script>
   </body>
