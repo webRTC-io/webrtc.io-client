@@ -5,15 +5,23 @@
   </head>
   <body>
     <video id="you" autoplay></video>
+    <video id="remote2" autoplay></video>
     <video id="remote" autoplay></video>
     <script src="./socket.io-client.js"></script>
     <script src="./io.js"></script>
     <script>
+      var one = 0;
       rtc.createStream('you');
-      rtc.connect("http://192.168.1.119:8001/");
+      rtc.connect("http://10.242.11.31:8001/");
       rtc.on('add remote stream', function(event) {
         console.log("ADDING REMOTE STREAM...");
-        rtc.attachStream(event.stream, 'remote');
+        if (one === 0) {
+            rtc.attachStream(event.stream, 'remote');
+            one = 1
+        } else {
+            rtc.attachStream(event.stream, 'remote2');
+        }
+ 
       });
     </script>
   </body>
