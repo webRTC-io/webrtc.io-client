@@ -15,9 +15,6 @@
         console.log("ADDING REMOTE STREAM...");
         document.getElementById('remote').src = webkitURL.createObjectURL(event.stream);
       });
-      rtc.on('get peers', function(peers) {
-        console.log("Got peers: " + peers);
-      });
     </script>
   </body>
 </html>
