@@ -5,7 +5,16 @@
     <link type="text/css" href="./style.css" rel="stylesheet"></link>
   </head>
   <body onload="init()">
-    <video id="you" autoplay></video>
+    <div id="videos">
+      <video id="you" autoplay></video>
+    </div>
+    <div id="chatbox">
+      <div id="messages">
+      </div>
+      <div id="chat">
+        <input id="chatinput" type="text"/>
+      </div>
+    </div>
     <script src="./socket.io-client.js"></script>
     <script src="./io.js"></script>
     <script>
@@ -41,7 +50,7 @@
       function setWH(video, i) {
         var perRow = getNumPerRow();
         var perColumn = Math.ceil(videos.length / perRow);
-        var width = Math.floor(window.innerWidth / perRow);
+        var width = Math.floor((window.innerWidth - 200) / perRow);
         var height = Math.floor(window.innerHeight / perColumn);
         console.log(width, height);
         video.width = width;
@@ -55,10 +64,41 @@
         var video = document.getElementById(domId);
         var clone = video.cloneNode(false);
         clone.id = "remote" + uid;
-        document.body.appendChild(clone);
+        document.getElementById('videos').appendChild(clone);
         videos.push(clone);
         uid++;
         return clone;
+      }
+
+      function initChat() {
+        var input = document.getElementById("chatinput");
+        input.addEventListener('keydown', function(event) {
+          var key = event.which || event.keyCode;
+          if (key === 13) {
+            rtc._socket.emit('chat msg', input.value);
+            addToChat(input.value);
+            input.value = "";
+          }
+        }, false);
+        rtc._socket.on('receive chat msg', function(data) {
+          console.log(data.color);
+          addToChat(data.msg, data.color.toString(16));
+        });
+      }
+
+      function addToChat(msg, color) {
+        var messages = document.getElementById('messages');
+        msg = sanitize(msg);
+        if (color) {
+          msg = '<span style="color: #' + color + ';">' + msg + '</span>';
+        } else {
+          msg = "<strong>" + msg + "</strong>";
+        }
+        messages.innerHTML = messages.innerHTML + msg + '<br>';
+      }
+
+      function sanitize(msg) {
+        return msg.replace(/</g, '&lt;');
       }
 
       function init() {
@@ -75,6 +115,7 @@
           rtc.attachStream(stream, clone.id);
           subdivideVideos();
         });
+        initChat();
       }
     </script>
   </body>
