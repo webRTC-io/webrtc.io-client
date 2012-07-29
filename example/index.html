@@ -16,7 +16,7 @@
       </div>
     </div>
     <script src="./socket.io-client.js"></script>
-    <script src="./io.js"></script>
+    <script src="../lib/io.js"></script>
     <script>
       var uid = 0;
       var videos = [];
@@ -108,7 +108,7 @@
           subdivideVideos();
         });
 
-        rtc.connect("http://10.242.11.185:8001/");
+        rtc.connect("http://localhost:8001/");
         rtc.on('add remote stream', function(stream) {
           console.log("ADDING REMOTE STREAM...");
           var clone = cloneVideo('you');
