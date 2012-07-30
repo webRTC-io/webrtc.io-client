@@ -20,6 +20,3 @@ rtc.on('ready', function() {
   // all streams are loaded
 });
 ```
-
-You can set the STUN server by calling 
-rtc.SERVER = "STUN stun.l.google.com:19302" and set your server. The default STUN server used by the library is one from google.
