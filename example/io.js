@@ -59,11 +59,6 @@ rtc.connect = function(server) {
     }
   });
   rtc._socket.on('remove peer connected', function(data) {
-    console.log(data);
-    //the actual onremovestream function is not yet supported. Here is a temporary workaround
-    rtc.fire('disconnect stream', data.socketId);
-    onClose(data.socketId);
-    //rtc.peerConnections[data.socketId].close();
     delete rtc.peerConnections[data.socketId];
   });
 
@@ -83,12 +78,6 @@ rtc.sendOffers = function() {
     var socketId = rtc.connections[i];
     rtc.sendOffer(socketId);
   }
-}
-
-rtc.onClose = function(data) {
-    rtc._socket.on('close stream', function() {
-        rtc.fire('close stream', data);
-    });
 }
 
 rtc.on = function(eventName, callback) {
@@ -133,7 +122,7 @@ rtc.createPeerConnection = function(id) {
 
   pc.onaddstream = function(event) {
     // TODO: Finalize this API
-    rtc.fire('add remote stream', event.stream, id);
+    rtc.fire('add remote stream', event.stream);
   };
   return pc;
 };
@@ -195,7 +184,7 @@ rtc.createStream = function(domId, onSuccess, onFail) {
       onFail();
     });  
   } else {  
-    alert('webRTC is not yet supported in this browser.');
+    alert('webRTC not available');  
   }  
 }
 
