@@ -1,6 +1,6 @@
 {
   "name": "webrtc.io-client",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Drop-in client code for webrtc.io",
   "repository": {
     "type": "git",
