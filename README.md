@@ -14,11 +14,11 @@ Now you can start using webRTC commands with our abstraction.
 ## Usage
 
 ```javascript
-rtc.createStream('DOM_id');
-rtc.connect('http://yourserveraddress');
-rtc.on('ready', function() {
-  // all streams are loaded
-});
+rtc.createStream({"video": true, "audio":true}, function(stream){
+  // get local stream for manipulation
+}
+rtc.connect('ws://yourserveraddress:8001', optionalRoom);
+//then a bunch of callbacks are available
 ```
 
 You can set the STUN server by calling 
