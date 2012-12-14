@@ -12,9 +12,24 @@
   ],
   "author": "David Peter <david.a.peter@gmail.com>",
   "contributors": [
-      { "name": "David Peter", "email": "david.a.peter@gmail.com" }
-    , { "name": "Ben Brittain", "email": "ben@brittain.org" }
-    , { "name": "Dennis Mårtensson", "email": "me@dennis.is" }
+    {
+      "name": "David Peter",
+      "email": "david.a.peter@gmail.com"
+    },
+    {
+      "name": "Ben Brittain",
+      "email": "ben@brittain.org"
+    },
+    {
+      "name": "Dennis Mårtensson",
+      "email": "me@dennis.is"
+    }
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "~0.9.1"
+  },
+  "scripts": {
+    "test": "jshint lib/"
+  }
 }
