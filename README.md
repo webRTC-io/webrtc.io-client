@@ -1,4 +1,4 @@
-# webrtc.io
+# webrtc.io [![Build Status](https://travis-ci.org/webRTC/webrtc.io-client.png?branch=master)](https://travis-ci.org/webRTC/webrtc.io-client)
 
 A library that is to webRTC like socket.io is to WebSockets.
 
