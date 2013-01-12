@@ -2,7 +2,7 @@
 
 A library that is to webRTC like socket.io is to WebSockets.
 
-This will eventually be bundled with the [server code](https://github.com/cavedweller/webRTC.io).
+This will eventually be bundled with the [server code](https://github.com/webRTC/webRTC.io).
 
 ## Installation
 
